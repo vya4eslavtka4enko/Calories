@@ -14,8 +14,8 @@
             <form action="" method="POST">
                {% csrf_token %}
                 <div class="input-group mb-3">
-                <input type="text" class="form-control" name="kind_food" placeholder="Enter" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <input type="text" class="form-control" name="how_many" placeholder="Enter" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" class="form-control" name="kind_food" placeholder="Enter Food" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" class="form-control" name="how_many" placeholder="Enter weight" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add</button>
     </div>
@@ -28,28 +28,27 @@
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                     <ul>
-                        {%for item in data%}
-                            {%if item == None%}
-                                <h1></h1>
-                            {%else%}
-                                <li>
-                                    <h3>{{item}}</h3>
-                                    <div class="input-group" style = "width:150px">
-                                            <input type="text" name = {{item}} class="input_gram" aria-label="Amount (to the nearest dollar)">
-                                            <div class="input-group-append">
-                                            <span class="input-group-text">g</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            {%endif%}
+                        {%for item in result%}
+                            <li>
+                                {%for i in item%}
+                                    <span>{{i}}</span>
+                                {%endfor%}
+                            </li>
                         {%endfor%}
-
                     </ul>
                     <div class="mx-auto" style="width: 200px;">
                         <button class="btn btn-outline-secondary" type="submit" id="button-addon">Calculate</button>
                     </div>
 
                     </div>
+                <div>
+                    <spa>
+                        <hr>
+                    </spa>
+                </div>
+                <div class="mx-auto" style="width: 200px;">
+                    <p>All calories :  <span>{{sum_all_calories}}</span></p>
+                </div>
                 </form>
                 </div>
     {{data}}
